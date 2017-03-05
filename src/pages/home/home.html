@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-toolbar>
+
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="navigateToReminder()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+
+
+    </ion-buttons>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding="">
+  <div *ngIf="shouldShowEmptyState == true">
+    <img src="assets/images/clock.png" />
+    <span>You don't have any reminders created. Start by clicking on the add button</span>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let item of reminderList" style="background-color:#aaffcc">
+      <span>{{item.date}} - {{item.end_date}}</span>
+      <h1>{{item.name}}</h1>
+      <progress-bar [avatar] = "item.avatar" [min] = "0" [max] = "item.getTotalDays()" 
+      [progress] = "item.getLapsedDays()"></progress-bar>
+    </ion-item>
+  </ion-list>
+</ion-content>
